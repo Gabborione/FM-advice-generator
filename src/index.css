@@ -13,11 +13,9 @@
   margin:0;
   padding: 0;
   text-decoration: none;
-}
-
-*::after{
   box-sizing: border-box;
 }
+
 
 body {
   font-size: 28px;
