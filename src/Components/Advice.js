@@ -78,6 +78,7 @@ const AdviceContainer = styled.div`
 const AdviceTitle = styled.h1`
     font-size: 1rem;
     color: var(--neon-green);
+    margin-bottom: 1rem;
 `;
 
 const Number = styled.span`
@@ -86,12 +87,13 @@ const Number = styled.span`
 
 const AdviceText = styled.p`
     color: var(--light-cyan);
+    margin-bottom: 1rem;
 `;
 
 const Divider = styled.img`
     position: relative;
     width: 100%;
-    top: 80px;
+    top: 15%;
 `;
 
 const DiceContainer = styled.div`
