@@ -1,23 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import "../index.css";
 
 const Advice = () => {
+    const [advice, setAdvice] = useState("");
+    const [toggleDice, setToggleDice] = useState(false);
+
+    useEffect(() => {
+        fetch("https://api.adviceslip.com/advice")
+            .then((response) => response.json())
+            .then((data) => setAdvice(data.slip));
+    }, [toggleDice]);
+
+    const handleClick = () => {
+        setToggleDice((toggleDice) => !toggleDice);
+    };
+
     return (
         <Background>
             <AdviceContainer>
                 <AdviceTitle>
-                    ADVICE <Number>#117</Number>
+                    ADVICE <Number>#{advice.id}</Number>
                 </AdviceTitle>
-                <AdviceText>
-                    "A caval donato non si guarda in bocca."
-                </AdviceText>
+                <AdviceText>"{advice.advice}"</AdviceText>
                 <Divider
                     src="images/pattern-divider-mobile.svg"
                     alt="divider"
                 />
-                <DiceContainer>
-                    <Dice src="images/icon-dice.svg" alt="Dice" />
+                <DiceContainer onClick={handleClick}>
+                    <Dice
+                        animate={toggleDice}
+                        src="images/icon-dice.svg"
+                        alt="Dice"
+                    />
                 </DiceContainer>
             </AdviceContainer>
         </Background>
@@ -51,6 +66,13 @@ const AdviceContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 2.5rem 1.5rem;
+
+    @media (min-width: 768px) {
+        aspect-ratio: 0;
+        height: 100%;
+        max-width: 600px;
+        max-height: 450px;
+    }
 `;
 
 const AdviceTitle = styled.h1`
@@ -82,8 +104,17 @@ const DiceContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    box-shadow: none;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        box-shadow: 0 0 30px var(--neon-green);
+    }
 `;
 
 const Dice = styled.img`
     width: 40%;
+    transform: ${(props) => (props.animate ? "rotate(720deg)" : "none")};
+    transition: transform 0.5s;
 `;
