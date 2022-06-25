@@ -13,11 +13,11 @@ const Advice = () => {
                     "A caval donato non si guarda in bocca."
                 </AdviceText>
                 <Divider
-                    src="./images/pattern-divider-desktop-svg"
+                    src="images/pattern-divider-mobile.svg"
                     alt="divider"
                 />
                 <DiceContainer>
-                    <Dice src="images/dice-icon.svg" alt="Dice" />
+                    <Dice src="images/icon-dice.svg" alt="Dice" />
                 </DiceContainer>
             </AdviceContainer>
         </Background>
@@ -50,7 +50,7 @@ const AdviceContainer = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 2.5rem 1.2rem;
+    padding: 2.5rem 1.5rem;
 `;
 
 const AdviceTitle = styled.h1`
@@ -66,7 +66,11 @@ const AdviceText = styled.p`
     color: var(--light-cyan);
 `;
 
-const Divider = styled.img``;
+const Divider = styled.img`
+    position: relative;
+    width: 100%;
+    top: 80px;
+`;
 
 const DiceContainer = styled.div`
     position: relative;
@@ -80,4 +84,6 @@ const DiceContainer = styled.div`
     align-items: center;
 `;
 
-const Dice = styled.img``;
+const Dice = styled.img`
+    width: 40%;
+`;
